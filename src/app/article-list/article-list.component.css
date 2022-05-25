@@ -6,10 +6,10 @@
 }
 
 .list ul li::marker {
-    content: '😠';
+    content: '🥑';
 }
 .list ul li:hover::marker {
-    content: '🤒';
+    content: '🍊';
 }
 
 .list ul li a {

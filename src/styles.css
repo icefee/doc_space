@@ -1,3 +1,4 @@
+@import url('highlight.js/styles/agate.css');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -51,16 +52,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #444;
 }
 
-.article em, .article code pre {
+.article em {
     background-color: #ddd;
     font-size: .8em;
 }
 
-.article code {
-    display: inline-block;
-}
-
-.article code pre {
+.article pre {
     margin: 0;
 }
 

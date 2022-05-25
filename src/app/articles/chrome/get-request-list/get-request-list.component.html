@@ -8,11 +8,9 @@
         </div>
         <div class="content">
             <p>开发中可能需要拿到控制台Network(网络)下的请求列表, 开发工具并没有提供复制的方法。这时候可以通过快捷键 <em>Ctril+Shift+I</em> 来打开开发者工具的开发者工具面板, 在控制台输入:</p>
-            <p class="no-text-indent">
-                <code>
-                    <pre>UI.panels.network.networkLogView.dataGrid.rootNodeInternal.flatNodes.map(n => n.requestInternal.url())</pre>
-                </code>
-            </p>
+            <pre>
+                <code class="language-js">UI.panels.network.networkLogView.dataGrid.rootNodeInternal.flatNodes.map(n => n.requestInternal.url())</code>
+            </pre>
             <p>控制台会打印出所有的请求网址列表, 右键列表<em>复制object</em>即可将数据复制出来</p>
         </div>
     </div>

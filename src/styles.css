@@ -1,4 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.root {
+    background-color: #eee;
+    height: 100vh;
+}
+
+.container {
+    width: 1200px;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.header {
+    padding: 20px 25px;
+}
+
+.header h1 {
+    width: fit-content;
+    font-size: 30px;
+    line-height: 1.5;
+    background-image: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.article {
+    padding-top: 30px;
+}
+
+.article .header {
+    display: flex;
+    justify-content: center;
+}
+
+.article .header h1 {
+    font-size: 25px;
+}
+
+.article .content {
+    padding: 25px;
+}
+
+.article .content p {
+    text-indent: 2em;
+    font-size: 18px;
+    color: #444;
+}
+
+.article em, .article code pre {
+    background-color: #ddd;
+    font-size: .8em;
+}
+
+.article code {
+    display: inline-block;
+}
+
+.article code pre {
+    margin: 0;
+}
+
+.article .pub {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}

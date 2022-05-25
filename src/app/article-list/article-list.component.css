@@ -1,0 +1,39 @@
+.list {
+    padding-left: 20px;
+}
+.list ul li {
+    font-size: 18px;
+}
+
+.list ul li::marker {
+    content: '😠';
+}
+.list ul li:hover::marker {
+    content: '🤒';
+}
+
+.list ul li a {
+    color: #444;
+    text-decoration: none;
+}
+
+.list ul li a {
+    position: relative;
+    display: inline-block;
+    padding-left: 5px;
+}
+
+.list ul li a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff);
+    transform: scaleX(0);
+    transition: transform .3s ease;
+}
+
+.list ul li a:hover::after {
+    transform: scale(1);
+}

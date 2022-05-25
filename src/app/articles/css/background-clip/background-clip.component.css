@@ -1,0 +1,41 @@
+.example .title {
+    padding-top: 10px;
+    margin: 0;
+}
+
+.example > div {
+    padding: 20px;
+    background-color: #222;
+}
+
+.example h1 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1.5;
+    width: fit-content;
+}
+
+.text-gradient h1 {
+    --color-1: #ff006e;
+    --color-2: #6600eb;
+    --color-3: #0bb2db;
+    background-image: linear-gradient(90deg, var(--color-1), var(--color-2), var(--color-3));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-image h1 {
+    background: url('../../../../assets/images/wallpaper.jfif') no-repeat 0% 0% / 200% auto;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: flutter 4s ease alternate infinite;
+}
+
+@keyframes flutter {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
+}

@@ -1,0 +1,25 @@
+.example {
+    position: relative;
+    height: 400px;
+    color: #fff;
+    background-color: #000;
+    overflow-y: scroll;
+}
+
+.example .fixed-header {
+    position: sticky;
+    padding: 15px;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+@supports (((-webkit-backdrop-filter: saturate(180%) blur(5px)) or (backdrop-filter:saturate(180%) blur(5px)))) {
+    .example .fixed-header {
+        backdrop-filter: saturate(180%) blur(5px);
+    }
+}
+

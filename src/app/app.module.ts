@@ -7,13 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageComponent } from './page/page.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { GetRequestListComponent } from './articles/chrome/get-request-list/get-request-list.component';
+import { BackdropFilterComponent } from './articles/css/backdrop-filter/backdrop-filter.component';
+import { BackgroundClipComponent } from './articles/css/background-clip/background-clip.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageComponent,
     ArticleListComponent,
-    GetRequestListComponent
+    GetRequestListComponent,
+    BackdropFilterComponent,
+    BackgroundClipComponent
   ],
   imports: [
     BrowserModule,

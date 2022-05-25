@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageComponent } from 'src/app/page/page.component';
 
 @Component({
@@ -6,4 +6,4 @@ import { PageComponent } from 'src/app/page/page.component';
   templateUrl: './get-request-list.component.html',
   styleUrls: ['./get-request-list.component.css']
 })
-export class GetRequestListComponent extends PageComponent implements OnInit {}
+export class GetRequestListComponent extends PageComponent {}

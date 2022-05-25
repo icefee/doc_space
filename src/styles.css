@@ -41,6 +41,7 @@ img {
 .root {
     background-color: #eee;
     height: 100vh;
+    overflow: hidden;
 }
 
 .container {
@@ -52,7 +53,7 @@ img {
 }
 
 .header {
-    padding: 20px 25px;
+    padding: 50px 25px 20px;
 }
 
 .header h1 {
@@ -63,10 +64,6 @@ img {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
-}
-
-.article {
-    padding-top: 30px;
 }
 
 .article .header {

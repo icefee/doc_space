@@ -9,6 +9,7 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { GetRequestListComponent } from './articles/chrome/get-request-list/get-request-list.component';
 import { BackdropFilterComponent } from './articles/css/backdrop-filter/backdrop-filter.component';
 import { BackgroundClipComponent } from './articles/css/background-clip/background-clip.component';
+import { ClipPathComponent } from './articles/css/clip-path/clip-path.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BackgroundClipComponent } from './articles/css/background-clip/backgrou
     ArticleListComponent,
     GetRequestListComponent,
     BackdropFilterComponent,
-    BackgroundClipComponent
+    BackgroundClipComponent,
+    ClipPathComponent
   ],
   imports: [
     BrowserModule,

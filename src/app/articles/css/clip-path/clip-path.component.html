@@ -1,0 +1,40 @@
+<div class="root">
+    <div class="container article">
+        <div class="header">
+            <h1>css蒙板裁剪自定义形状属性clip-path</h1>
+        </div>
+        <div class="info pub">
+            <p>发布于: 2022/05/25 15:58</p>
+        </div>
+        <div class="content">
+            <h4>效果演示</h4>
+            <div class="example">
+                <div class="scroller">
+                    <div class="background">
+                        <img src="../../../../assets/images/wallpaper.jfif" />
+                    </div>
+                </div>
+                <div class="fixed-layer">
+                    <div class="detail">内容区</div>
+                    <svg width="200" height="150" viewBox="0 0 200 150" [ngStyle]="{height: 0}">
+                        <defs>
+                            <clipPath id="mask">
+                                <path d="M0,0 L150,0 200,50 200,150 0,150Z" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+            <h4>css属性</h4>
+            <pre>
+                <code class="language-css">{{cssString}}</code>
+            </pre>
+            <h4>svg滤镜</h4>
+            <pre>
+                <code class="language-xml">{{svgMaskString}}</code>
+            </pre>
+            <h4>组件开发中可以将svg路径封装为组件, 传入容器大小或者长宽比, 实现更灵活的运用</h4>
+            <h4>缺点: svg矢量路径比较依赖比例, 功能强大但灵活性一般</h4>
+        </div>
+    </div>
+</div>

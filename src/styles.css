@@ -81,6 +81,7 @@ img {
 
 .article .content p {
     text-indent: 2em;
+    line-height: 1.5;
     font-size: 18px;
     color: #444;
 }
@@ -90,12 +91,22 @@ img {
     font-size: .8em;
 }
 
-.article pre {
+.article .m-0 {
     margin: 0;
+}
+
+.article pre {
+    margin: -15px 0 -10px;
 }
 
 .article .pub {
     padding: 20px;
     text-align: center;
     color: #666;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
 }

@@ -38,3 +38,9 @@
 .list ul li a:hover::after {
     transform: scale(1);
 }
+
+.list ul li em {
+    font-size: 15px;
+    margin-left: 5px;
+    color: #777;
+}

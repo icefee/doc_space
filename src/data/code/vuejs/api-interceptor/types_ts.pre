@@ -1,0 +1,11 @@
+type RequestMethod = 'GET' | 'POST'
+
+type HttpIns = {
+    getJson: typeof getJson;
+    postJson: typeof postJson;
+}
+
+type Interceptor = {
+    request?: ((arg: RequestInit) => RequestInit) | null;
+    response?: (function<T = any>(arg: ApiResult<T>): Promise<ApiResult<T>>) | null // (<T = any>(arg: ApiResult<T>) => Promise<ApiResult<T>>) | null;
+}

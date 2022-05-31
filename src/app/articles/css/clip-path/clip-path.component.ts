@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PageComponent } from 'src/app/page/page.component';
 
 @Component({
@@ -6,15 +6,13 @@ import { PageComponent } from 'src/app/page/page.component';
   templateUrl: './clip-path.component.html',
   styleUrls: ['./clip-path.component.css']
 })
-export class ClipPathComponent extends PageComponent {
-  public cssString: string = `{\n clip-path: url(#mask); \n}`
-  public svgMaskString: string = `
-  <svg width="200" height="150" viewBox="0 0 200 150" [ngStyle]="{height: 0}">
-    <defs>
-      <clipPath id="mask">
-          <path d="M0,0 L150,0 200,50 200,150 0,150Z" />
-      </clipPath>
-    </defs>
-  </svg>`
+export class ClipPathComponent extends PageComponent implements OnInit {
+  public cssString: string = ''
+  public svgMaskString: string = ''
   // public scale: number = 5;
+  async ngOnInit(): Promise<void> {
+    this.cssString = await this.loadCode('css/clip-path/css.pre')
+    this.svgMaskString = await this.loadCode('css/clip-path/svg.pre')
+    setTimeout(this.initHljs, 0);
+  }
 }

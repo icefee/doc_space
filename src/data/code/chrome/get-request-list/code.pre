@@ -1,0 +1,1 @@
+UI.panels.network.networkLogView.dataGrid.rootNodeInternal.flatNodes.map(n => n.requestInternal.url())

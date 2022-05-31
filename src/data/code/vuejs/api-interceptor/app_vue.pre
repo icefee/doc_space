@@ -1,0 +1,23 @@
+<template>
+  <interceptor-provider :response="response">
+    <router-view class="view" />
+  </interceptor-provider>
+</template>
+
+<script lang="ts" setup>
+import { InterceptorProvider, ApiResult } from './hook/http'
+import { setLoginState } from './store/auth'
+import { useRouter } from 'vue-router'
+// import './global.css'
+
+const router = useRouter()
+
+function response(res: ApiResult) {
+  if (res.code === -40001) {
+    setLoginState(false)
+    router.replace('/')
+    return Promise.reject(res)
+  }
+  return Promise.resolve(res)
+}
+</script>

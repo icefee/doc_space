@@ -96,7 +96,7 @@ img {
 }
 
 .article pre {
-    margin: -15px 0 -10px;
+    margin: -20px 0 -15px;
 }
 
 .article .pub {
@@ -108,5 +108,8 @@ img {
 @media screen and (max-width: 600px) {
     .container {
         width: 100%;
+    }
+    .article .content p {
+        font-size: 1em;
     }
 }

@@ -1,0 +1,10 @@
+<script lang="ts" setup>
+  import { useHttp } from '../hook/http'
+
+  const http = useHttp()
+
+  async function getData() {
+    const { code, data, detail } = await http.getJson<{ uuid: string; name: string; }[]>('/list');
+    // code: number
+  }
+</script>

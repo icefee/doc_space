@@ -6,6 +6,10 @@ import { PageComponent } from 'src/app/page/page.component';
   templateUrl: './backdrop-filter.component.html',
   styleUrls: ['./backdrop-filter.component.css']
 })
-export class BackdropFilterComponent extends PageComponent {
-  public cssString: string = `{\n  backdrop-filter: saturate(180%) blur(5px); \n}`
+export class BackdropFilterComponent extends PageComponent implements OnInit {
+  public cssString: string = ''
+  async ngOnInit(): Promise<void> {
+    this.cssString = await this.loadCode('css/backdrop-filter/css.pre')
+    setTimeout(this.initHljs, 0);
+  }
 }

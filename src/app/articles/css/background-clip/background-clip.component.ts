@@ -8,10 +8,13 @@ import { PageComponent } from 'src/app/page/page.component';
 })
 export class BackgroundClipComponent extends PageComponent implements OnInit {
 
-  public gradientCssString: string = `{\n background-image: linear-gradient(90deg, #ff006e, #6600eb, #0bb2db); \n background-clip: text; \n -webkit-text-fill-color: transparent; \n}`
-  public imageCssString: string = `{\n background: url('background.jfif') no-repeat center / 100% auto; \n background-clip: text; \n -webkit-text-fill-color: transparent; \n}`
+  public gradientCssString: string = ''
+  public imageCssString: string = ''
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.gradientCssString = await this.loadCode('css/background-clip/gradient.pre')
+    this.imageCssString = await this.loadCode('css/background-clip/image.pre')
+    setTimeout(this.initHljs, 0);
   }
 
 }

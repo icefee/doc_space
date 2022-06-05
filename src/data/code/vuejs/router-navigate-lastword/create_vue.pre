@@ -1,0 +1,15 @@
+<script lang="ts" setup>
+import { useParamsRouter } from './router'
+
+const paramsRouter = useParamsRouter()
+
+async function addRecord() {
+    const result = await http.add_record('list/add', payload) // 添加数据
+    if (result.code === 0) {
+        paramsRouter.back({
+            add: true,
+            msg: '添加成功'
+        }) // 添加成功, 返回参数
+    }
+}
+</script>

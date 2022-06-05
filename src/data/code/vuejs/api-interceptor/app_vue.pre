@@ -1,6 +1,6 @@
 <template>
   <interceptor-provider :response="response">
-    <router-view class="view" />
+    <router-view />
   </interceptor-provider>
 </template>
 

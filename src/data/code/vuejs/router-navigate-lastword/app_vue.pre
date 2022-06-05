@@ -1,0 +1,9 @@
+<template>
+    <router-guard>
+        <router-view />
+    </router-guard>
+</template>
+
+<script>
+import { RouterGuard } from './router'
+</script>

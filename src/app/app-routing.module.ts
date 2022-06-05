@@ -6,11 +6,16 @@ import { GetRequestListComponent } from './articles/chrome/get-request-list/get-
 import { BackdropFilterComponent } from './articles/css/backdrop-filter/backdrop-filter.component';
 import { ClipPathComponent } from './articles/css/clip-path/clip-path.component';
 import { ApiInterceptorComponent } from './articles/vuejs/api-interceptor/api-interceptor.component';
+import { RouterNavigateLastwordComponent } from './articles/vuejs/router-navigate-lastword/router-navigate-lastword.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ArticleListComponent
+  },
+  {
+    path: 'vuejs/router_navigate_lastword',
+    component: RouterNavigateLastwordComponent
   },
   {
     path: 'vuejs/api_interceptor',

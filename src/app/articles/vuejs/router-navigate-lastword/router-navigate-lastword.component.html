@@ -1,0 +1,39 @@
+<div class="root">
+    <div class="container article">
+        <div class="header">
+            <h1>vuejs(3.x)路由(vue-router)导航遗言参数</h1>
+        </div>
+        <div class="info pub">
+            <p>发布于: 2022/06/04 09:40</p>
+        </div>
+        <div class="content">
+            <p>在使用vuejs开发单页面应用的时候, 一般会用到官方路由库vue-router。</p>
+            <p>在某些场景下, 我们会用keep-alive缓存数据更新不太频繁的组件以达到优化性能的目的。但有时候我们又需要感知数据变化, 手动去更新缓存的组件。</p>
+            <p>设想一个场景, 我们有一个列表页面, 每个列表项有查看详情, 编辑等操作, 页面还有一个公共的添加按钮, 用于跳转到添加页面。</p>
+            <p>为了在跳转到查看详情等页面后返回当前列表页面的时候, 列表页面能保持分页、筛选、搜索状态等, 我们会选择将列表页面用keep-alive缓存。</p>
+            <p>但是这也会产生一个新的问题: 在我们添加和编辑数据完成后返回列表页面, 列表数据还是之前的, 这显然不是我们想要的结果。我们需要监听到这种状态, 去刷新列表。</p>
+            <p>下面结合我在项目中的实现, 分享一下我的思路。</p>
+            <h3 class="m-0">router.ts</h3>
+            <pre>
+                <code class="language-typescript">{{router_ts}}</code>
+            </pre>
+            <h3 class="m-0">App.vue</h3>
+            <pre>
+                <code class="language-handlebars">{{app_vue}}</code>
+            </pre>
+            <h3 class="m-0">列表页面设置监听回调 List.vue</h3>
+            <pre>
+                <code class="language-handlebars">{{list_vue}}</code>
+            </pre>
+            <h3 class="m-0">创建页面传递参数 Create.vue</h3>
+            <pre>
+                <code class="language-handlebars">{{create_vue}}</code>
+            </pre>
+            <div class="demo-title">
+                <h3 class="m-0">在线演示</h3>
+                <a [href]="online_demo" target="_blank">[新窗口]</a>
+            </div>
+            <iframe width="100%" height="600" frameborder="0" [src]="online_demo | safeUrl"></iframe>
+        </div>
+    </div>
+</div>

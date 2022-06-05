@@ -45,7 +45,7 @@ img {
 }
 
 .container {
-    width: 1200px;
+    width: 1000px;
     height: 100%;
     overflow-y: auto;
     background-color: #fff;
@@ -105,7 +105,16 @@ img {
     color: #666;
 }
 
-@media screen and (max-width: 600px) {
+.article .demo-title {
+    display: flex;
+    align-items: center;
+}
+
+.article .demo-title h3 {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 1000px) {
     .container {
         width: 100%;
     }

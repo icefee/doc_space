@@ -1,0 +1,7 @@
+<script lang="ts" setup>
+import { onResume } from './router'
+
+onResume((arg: any) => {
+    console.log('获得参数', arg)
+})
+</script>

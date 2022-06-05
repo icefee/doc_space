@@ -11,6 +11,8 @@ import { BackdropFilterComponent } from './articles/css/backdrop-filter/backdrop
 import { BackgroundClipComponent } from './articles/css/background-clip/background-clip.component';
 import { ClipPathComponent } from './articles/css/clip-path/clip-path.component';
 import { ApiInterceptorComponent } from './articles/vuejs/api-interceptor/api-interceptor.component';
+import { RouterNavigateLastwordComponent } from './articles/vuejs/router-navigate-lastword/router-navigate-lastword.component';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ApiInterceptorComponent } from './articles/vuejs/api-interceptor/api-in
     BackdropFilterComponent,
     BackgroundClipComponent,
     ClipPathComponent,
-    ApiInterceptorComponent
+    ApiInterceptorComponent,
+    RouterNavigateLastwordComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,

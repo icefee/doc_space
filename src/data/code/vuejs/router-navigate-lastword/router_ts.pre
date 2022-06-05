@@ -1,0 +1,68 @@
+import { watch, defineComponent, shallowRef } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+// import type { Router } from 'vue-router'
+
+type ResumeCallback = (arg: any) => void
+
+type ParamsOption = {
+    once?: boolean; /// 只调用一次 destroy after call
+    target?: string; /// 只在特定路由调用 trigger only in the path
+}
+
+const listeners = shallowRef<Record<string, ResumeCallback | null>>({})
+const lastWords = shallowRef<{ params: any; option?: ParamsOption } | null>(null)
+const navigateBy = shallowRef(false)
+
+export function onResume(resumeCallback: ResumeCallback) {
+    const route = useRoute()
+    listeners.value = {
+        ...listeners.value,
+        [route.path]: resumeCallback
+    }
+}
+
+interface ParamsRouter {
+    back(arg: any, option?: ParamsOption): void
+}
+
+export function useParamsRouter(): ParamsRouter {
+    const router = useRouter()
+    return {
+        back: (arg: any, option: ParamsOption = { once: false }) => {
+            lastWords.value = {
+                params: arg,
+                option
+            };
+            navigateBy.value = true;
+            router.back()
+        }
+    }
+}
+
+export const RouterGuard = defineComponent({
+    setup(props, ctx) {
+        const route = useRoute()
+        watch(
+            () => route.path,
+            (path: string) => {
+                if (lastWords.value) {
+                    const { params, option } = lastWords.value
+                    const call = () => {
+                        if (navigateBy.value) {
+                            listeners.value[path]?.(params)
+                            navigateBy.value = false
+                        }
+                    }
+                    if (option?.target === path) {
+                        call()
+                    }
+                    else call()
+                    if (option?.once) {
+                        listeners.value[path] = null
+                    }
+                }
+            }
+        )
+        return () => ctx.slots.default!()
+    }
+})

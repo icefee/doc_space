@@ -1,12 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
-import { BackgroundClipComponent } from './articles/css/background-clip/background-clip.component';
-import { GetRequestListComponent } from './articles/chrome/get-request-list/get-request-list.component';
-import { BackdropFilterComponent } from './articles/css/backdrop-filter/backdrop-filter.component';
-import { ClipPathComponent } from './articles/css/clip-path/clip-path.component';
-import { ApiInterceptorComponent } from './articles/vuejs/api-interceptor/api-interceptor.component';
-import { RouterNavigateLastwordComponent } from './articles/vuejs/router-navigate-lastword/router-navigate-lastword.component';
 
 const routes: Routes = [
   {
@@ -14,28 +8,16 @@ const routes: Routes = [
     component: ArticleListComponent
   },
   {
-    path: 'vuejs/router_navigate_lastword',
-    component: RouterNavigateLastwordComponent
+    path: 'chrome',
+    loadChildren: () => import('./articles/chrome/chrome-routing.module').then(m => m.ChromeRoutingModule),
   },
   {
-    path: 'vuejs/api_interceptor',
-    component: ApiInterceptorComponent
+    path: 'css',
+    loadChildren: () => import('./articles/css/css-routing.module').then(m => m.CssRoutingModule),
   },
   {
-    path: 'css/clip_path',
-    component: ClipPathComponent
-  },
-  {
-    path: 'css/backdrop_filter',
-    component: BackdropFilterComponent
-  },
-  {
-    path: 'chrome/get_request_list',
-    component: GetRequestListComponent
-  },
-  {
-    path: 'css/background_clip',
-    component: BackgroundClipComponent
+    path: 'vuejs',
+    loadChildren: () => import('./articles/vuejs/vuejs-routing.module').then(m => m.VuejsRoutingModule),
   }
 ];
 

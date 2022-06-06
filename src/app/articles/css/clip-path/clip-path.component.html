@@ -33,6 +33,62 @@
             <pre>
                 <code class="language-xml">{{svgMaskString}}</code>
             </pre>
+            <h4>较为复杂的实例</h4>
+            <div class="paper-example">
+                <div class="paper" (mouseenter)="pos = 40" (mouseleave)="pos = 0">
+                    <div class="inner"></div>
+                    <svg class="shadow-drop" [attr.width]="size" [attr.height]="size"
+                        [attr.viewBox]="[0, 0, size, size].join( )">
+                        <path [attr.d]="dropPath" fill="#aaa" filter="url(#paper-shadow)" />
+                    </svg>
+                </div>
+                <svg [attr.width]="size" [attr.height]="size" [attr.viewBox]="[0, 0, size, size].join( )"
+                    [style.height]="0">
+                    <defs>
+                        <clipPath id="paper-mask">
+                            <path [attr.d]="clipPath" />
+                        </clipPath>
+                        <filter id="paper-shadow" x="0" y="0" width="100%" height="100%">
+                            <feOffset result="offOut" in="SourceAlpha" dx="-1" dy="1" />
+                            <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
+                            <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            <div class="demo-title">
+                <h4 class="m-0">在线演示(vuejs)</h4>
+                <a [href]="online_demo_vuejs" target="_blank">[新窗口]</a>
+            </div>
+            <mat-tab-group>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <div class="tab-label">
+                            <app-icon name="react" color="rgb(65,184,131)"></app-icon>
+                            <span>React</span>
+                        </div>
+                    </ng-template>
+                    <iframe width="100%" height="600" frameborder="0" [src]="online_demo_react | safeUrl"></iframe>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <div class="tab-label">
+                            <app-icon name="vuejs" color="rgb(65,184,131)"></app-icon>
+                            <span>Vuejs</span>
+                        </div>
+                    </ng-template>
+                    <iframe width="100%" height="600" frameborder="0" [src]="online_demo_vuejs | safeUrl"></iframe>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <div class="tab-label">
+                            <app-icon name="angular" color="rgb(195,0,47)"></app-icon>
+                            <span>Angular</span>
+                        </div>
+                    </ng-template>
+                    <iframe width="100%" height="600" frameborder="0" [src]="online_demo_angular | safeUrl"></iframe>
+                </mat-tab>
+            </mat-tab-group>
             <h4>组件开发中可以将svg路径封装为组件, 传入容器大小或者长宽比, 实现更灵活的运用</h4>
             <h4>缺点: svg矢量路径比较依赖比例, 功能强大但灵活性一般</h4>
         </div>

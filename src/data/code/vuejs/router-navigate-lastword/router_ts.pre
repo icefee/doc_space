@@ -1,6 +1,6 @@
 import { watch, defineComponent, shallowRef } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-// import type { Router } from 'vue-router'
+import type { Router, RouteLocationRaw, NavigationFailure } from 'vue-router'
 
 type ResumeCallback = (arg: any) => void
 
@@ -21,22 +21,54 @@ export function onResume(resumeCallback: ResumeCallback) {
     }
 }
 
-interface ParamsRouter {
-    back(arg?: any, option?: ParamsOption): void
+
+type Params = [arg?: any, option?: ParamsOption]
+type ParamsCallback = (...arg: Params) => void;
+
+interface ParamsRouter extends Router {
+    back: ParamsCallback;
+    forward: ParamsCallback;
+    go: (delta: number, ...params: Params) => void;
+    push: (to: RouteLocationRaw, ...params: Params) => Promise<void | NavigationFailure | undefined>;
+    replace: (to: RouteLocationRaw, ...params: Params) => Promise<void | NavigationFailure | undefined>;
+}
+
+// const keys: Array<keyof ParamsRouter> = ['back', 'forward', 'go', 'push', 'replace']
+
+function setLastword(arg?: any, option: ParamsOption = { once: false }) {
+    lastWords.value = {
+        params: arg,
+        option
+    };
+    navigateBy.value = true;
 }
 
 export function useParamsRouter(): ParamsRouter {
     const router = useRouter()
-    return {
-        back: (arg?: any, option: ParamsOption = { once: false }) => {
-            lastWords.value = {
-                params: arg,
-                option
-            };
-            navigateBy.value = true;
-            router.back()
+    const paramsRouter: ParamsRouter = {
+        ...router,
+        back: (...arg: Params) => {
+            setLastword(arg)
+            return router.back()
+        },
+        forward: (...arg: Params) => {
+            setLastword(arg)
+            return router.forward()
+        },
+        go: (delta, ...arg) => {
+            setLastword(arg)
+            return router.go(delta)
+        },
+        push: (to, ...arg) => {
+            setLastword(arg)
+            return router.push(to)
+        },
+        replace: (to, ...arg) => {
+            setLastword(arg)
+            return router.push(to)
         }
     }
+    return paramsRouter
 }
 
 export const RouterGuard = defineComponent({

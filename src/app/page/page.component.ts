@@ -27,4 +27,10 @@ export class PageComponent {
     return loadCode(path)
   }
 
+  protected loadCodes(paths: string[]) {
+    return Promise.all(
+      paths.map(loadCode)
+    )
+  }
+
 }

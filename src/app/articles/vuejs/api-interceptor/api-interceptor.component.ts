@@ -13,10 +13,16 @@ export class ApiInterceptorComponent extends PageComponent implements OnInit {
     public home_vue: string = ''
 
     async ngOnInit(): Promise<void> {
-        this.types_ts = await this.loadCode('vuejs/api-interceptor/types_ts.pre')
-        this.http_ts = await this.loadCode('vuejs/api-interceptor/http_ts.pre')
-        this.app_vue = await this.loadCode('vuejs/api-interceptor/app_vue.pre')
-        this.home_vue = await this.loadCode('vuejs/api-interceptor/home_vue.pre')
+        const [types_ts, http_ts, app_vue, home_vue] = await this.loadCodes([
+            'vuejs/api-interceptor/types_ts.pre',
+            'vuejs/api-interceptor/http_ts.pre',
+            'vuejs/api-interceptor/app_vue.pre',
+            'vuejs/api-interceptor/home_vue.pre'
+        ])
+        this.types_ts = types_ts
+        this.http_ts = http_ts
+        this.app_vue = app_vue
+        this.home_vue = home_vue
         setTimeout(this.initHljs, 0);
     }
 }

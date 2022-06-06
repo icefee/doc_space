@@ -12,8 +12,12 @@ export class BackgroundClipComponent extends PageComponent implements OnInit {
   public imageCssString: string = ''
 
   async ngOnInit(): Promise<void> {
-    this.gradientCssString = await this.loadCode('css/background-clip/gradient.pre')
-    this.imageCssString = await this.loadCode('css/background-clip/image.pre')
+    const [gradientCss, imageCss] = await this.loadCodes([
+      'css/background-clip/gradient.pre',
+      'css/background-clip/image.pre'
+    ])
+    this.gradientCssString = gradientCss
+    this.imageCssString = imageCss
     setTimeout(this.initHljs, 0);
   }
 

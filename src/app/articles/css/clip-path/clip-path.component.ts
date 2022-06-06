@@ -11,8 +11,12 @@ export class ClipPathComponent extends PageComponent implements OnInit {
   public svgMaskString: string = ''
   // public scale: number = 5;
   async ngOnInit(): Promise<void> {
-    this.cssString = await this.loadCode('css/clip-path/css.pre')
-    this.svgMaskString = await this.loadCode('css/clip-path/svg.pre')
+    const [cssString, svgMaskString] = await this.loadCodes([
+      'css/clip-path/css.pre',
+      'css/clip-path/svg.pre'
+    ])
+    this.cssString = cssString
+    this.svgMaskString = svgMaskString
     setTimeout(this.initHljs, 0);
   }
 }

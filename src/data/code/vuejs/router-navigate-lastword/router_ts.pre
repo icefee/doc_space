@@ -22,13 +22,13 @@ export function onResume(resumeCallback: ResumeCallback) {
 }
 
 interface ParamsRouter {
-    back(arg: any, option?: ParamsOption): void
+    back(arg?: any, option?: ParamsOption): void
 }
 
 export function useParamsRouter(): ParamsRouter {
     const router = useRouter()
     return {
-        back: (arg: any, option: ParamsOption = { once: false }) => {
+        back: (arg?: any, option: ParamsOption = { once: false }) => {
             lastWords.value = {
                 params: arg,
                 option

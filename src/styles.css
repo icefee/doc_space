@@ -119,10 +119,13 @@ img {
     align-items: center;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
     .container {
         width: 100%;
     }
+}
+
+@media screen and (max-width: 640px) {
     .article .content p {
         font-size: 1em;
     }

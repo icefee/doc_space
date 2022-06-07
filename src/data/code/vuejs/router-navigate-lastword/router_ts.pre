@@ -33,7 +33,7 @@ interface ParamsRouter extends Router {
     replace: (to: RouteLocationRaw, ...params: Params) => Promise<void | NavigationFailure | undefined>;
 }
 
-// const keys: Array<keyof ParamsRouter> = ['back', 'forward', 'go', 'push', 'replace']
+const keys: Array<keyof ParamsRouter> = ['back', 'forward', 'go', 'push', 'replace']
 
 function setLastword(arg?: any, option: ParamsOption = { once: false }) {
     lastWords.value = {
@@ -45,30 +45,15 @@ function setLastword(arg?: any, option: ParamsOption = { once: false }) {
 
 export function useParamsRouter(): ParamsRouter {
     const router = useRouter()
-    const paramsRouter: ParamsRouter = {
-        ...router,
-        back: (...arg: Params) => {
-            setLastword(arg)
-            return router.back()
-        },
-        forward: (...arg: Params) => {
-            setLastword(arg)
-            return router.forward()
-        },
-        go: (delta, ...arg) => {
-            setLastword(arg)
-            return router.go(delta)
-        },
-        push: (to, ...arg) => {
-            setLastword(arg)
-            return router.push(to)
-        },
-        replace: (to, ...arg) => {
-            setLastword(arg)
-            return router.push(to)
+    const proxy = new Proxy(router, {
+        get: function(...args) {
+            if (keys.includes(args[1] as keyof ParamsRouter)) {
+                setLastword(arguments)
+            }
+            return Reflect.get(...args)
         }
-    }
-    return paramsRouter
+    });
+    return proxy
 }
 
 export const RouterGuard = defineComponent({
@@ -98,3 +83,4 @@ export const RouterGuard = defineComponent({
         return () => ctx.slots.default!()
     }
 })
+

@@ -1,6 +1,6 @@
-import { watch, defineComponent, shallowRef } from 'vue'
+import { defineComponent, shallowRef, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import type { Router, RouteLocationRaw, NavigationFailure } from 'vue-router'
+import type { Router, RouteLocationRaw, RouteLocationNormalized, NavigationFailure } from 'vue-router'
 
 type ResumeCallback = (arg: any) => void
 
@@ -72,25 +72,25 @@ export function useParamsRouter(): ParamsRouter {
 }
 
 export const RouterGuard = defineComponent({
-    setup(props, ctx) {
-        const route = useRoute()
-        watch(
-            () => route.path,
-            (path: string) => {
+    setup(_props, ctx) {
+        const router = useRouter()
+        router.afterEach(
+            (to: RouteLocationNormalized, _from, _failure) => {
                 if (lastWords.value) {
                     const { params, option } = lastWords.value
-                    const call = () => {
+                    const call = async () => {
                         if (navigateBy.value) {
-                            listeners.value[path]?.(params)
+                            await nextTick()
+                            listeners.value[to.path]?.(params)
                             navigateBy.value = false
                         }
                     }
-                    if (option?.target === path) {
+                    if (option?.target === to.path) {
                         call()
                     }
                     else call()
                     if (option?.once) {
-                        listeners.value[path] = null
+                        listeners.value[to.path] = null
                     }
                 }
             }

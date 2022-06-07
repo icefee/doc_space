@@ -11,7 +11,7 @@ export class RouterNavigateLastwordComponent extends PageComponent implements On
   public app_vue: string = ''
   public list_vue: string = ''
   public create_vue: string = ''
-  public online_demo: string = 'https://stackblitz.com/edit/vitejs-vite-6r13a9?file=src/pages/List.vue'
+  public online_demo: string = 'https://stackblitz.com/edit/vitejs-vite-ftz6av?embed=1&file=src/pages/List.vue'
 
   async ngOnInit(): Promise<void> {
     const [router_ts, app_vue, list_vue, create_vue] = await this.loadCodes([

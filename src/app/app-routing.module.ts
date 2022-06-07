@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'vuejs',
     loadChildren: () => import('./articles/vuejs/vuejs-routing.module').then(m => m.VuejsRoutingModule),
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 

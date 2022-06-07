@@ -1,0 +1,15 @@
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.not-found h1 {
+    margin: 0;
+    font-weight: bolder;
+    font-size: 100px;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.5;
+}

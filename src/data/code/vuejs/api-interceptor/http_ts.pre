@@ -12,6 +12,10 @@ export type ApiResult<T = any> = {
 
 const baseApiUrl = '/api/';
 
+const apiAuthWhiteList = [
+    'user/login'
+]; // 不需要验证token的接口白名单
+
 const interceptors = shallowReactive<Interceptor>({
     request: null,
     response: null
@@ -25,7 +29,7 @@ export function setToken(token: string) {
 }
 
 async function request<T = any>(url: string, method: RequestMethod, contentType: string | null, body: any): Promise<ApiResult<T>> {
-    if (tokenExpire.value) {
+    if (!apiAuthWhiteList.includes('user/login') && tokenExpire.value) {
         return errorResponse.value as ApiResult<T>
     }
     const headers: Headers = new Headers({

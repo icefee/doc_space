@@ -1,5 +1,6 @@
 .not-found {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -11,5 +12,15 @@
     font-size: 100px;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 1.5;
+    line-height: 1.2;
+    animation: inching 5s ease-in infinite alternate-reverse;
+}
+
+@keyframes inching {
+    from {
+        background-position: center 0%;
+    }
+    to {
+        background-position: center 100%;
+    }
 }

@@ -12,16 +12,20 @@
                 <div class="text-gradient">
                     <h1>background-clip</h1>
                 </div>
-                <pre>
-                    <code class="language-css">{{gradientCssString}}</code>
-                </pre>
+                <app-loading-wrapper [loading]="gradientCssString === ''">
+                    <pre>
+                        <code class="language-css">{{gradientCssString}}</code>
+                    </pre>
+                </app-loading-wrapper>
                 <h3 class="title">背景图片填充</h3>
                 <div class="text-image">
                     <h1>background-clip</h1>
                 </div>
-                <pre>
-                    <code class="language-css">{{imageCssString}}</code>
-                </pre>
+                <app-loading-wrapper [loading]="imageCssString === ''">
+                    <pre>
+                        <code class="language-css">{{imageCssString}}</code>
+                    </pre>
+                </app-loading-wrapper>
             </div>
         </div>
     </div>

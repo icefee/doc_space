@@ -14,21 +14,29 @@
             <p>但是这也会产生一个新的问题: 在我们添加和编辑数据完成后返回列表页面, 列表数据还是之前的, 这显然不是我们想要的结果。我们需要监听到这种状态, 去刷新列表。</p>
             <p>下面结合我在项目中的实现, 分享一下我的思路。</p>
             <h3 class="m-0">router.ts</h3>
-            <pre>
-                <code class="language-typescript">{{router_ts}}</code>
-            </pre>
+            <app-loading-wrapper [loading]="router_ts === ''">
+                <pre>
+                    <code class="language-typescript">{{router_ts}}</code>
+                </pre>
+            </app-loading-wrapper>
             <h3 class="m-0">App.vue</h3>
-            <pre>
-                <code class="language-handlebars">{{app_vue}}</code>
-            </pre>
+            <app-loading-wrapper [loading]="app_vue === ''">
+                <pre>
+                    <code class="language-handlebars">{{app_vue}}</code>
+                </pre>
+            </app-loading-wrapper>
             <h3 class="m-0">列表页面设置监听回调 List.vue</h3>
-            <pre>
-                <code class="language-handlebars">{{list_vue}}</code>
-            </pre>
+            <app-loading-wrapper [loading]="list_vue === ''">
+                <pre>
+                    <code class="language-handlebars">{{list_vue}}</code>
+                </pre>
+            </app-loading-wrapper>
             <h3 class="m-0">创建页面传递参数 Create.vue</h3>
-            <pre>
-                <code class="language-handlebars">{{create_vue}}</code>
-            </pre>
+            <app-loading-wrapper [loading]="create_vue === ''">
+                <pre>
+                    <code class="language-handlebars">{{create_vue}}</code>
+                </pre>
+            </app-loading-wrapper>
             <div class="demo-title">
                 <h3 class="m-0">在线演示</h3>
                 <a [href]="online_demo" target="_blank">[新窗口]</a>

@@ -11,13 +11,17 @@
             <p>常规用法里, 一般用hook函数获取模块内部封装的变量。在实际开发中, 很容易发现可以用hook把组件和逻辑封装起来, 达到隔离状态的目的。</p>
             <p>下面我以封装一个带表单的弹窗组件(封装naive-ui, 其他组件库类似)为例:</p>
             <h3 class="m-0">dialog.tsx</h3>
-            <pre>
-                <code class="language-typescript">{{dialog_tsx}}</code>
-            </pre>
+            <app-loading-wrapper [loading]="dialog_tsx === ''">
+                <pre>
+                    <code class="language-typescript">{{dialog_tsx}}</code>
+                </pre>
+            </app-loading-wrapper>
             <h3 class="m-0">test_tsx</h3>
-            <pre>
-                <code class="language-typescript">{{test_tsx}}</code>
-            </pre>
+            <app-loading-wrapper [loading]="test_tsx === ''">
+                <pre>
+                    <code class="language-typescript">{{test_tsx}}</code>
+                </pre>
+            </app-loading-wrapper>
         </div>
     </div>
 </div>

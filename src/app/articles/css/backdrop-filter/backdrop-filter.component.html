@@ -18,9 +18,11 @@
                     <img src="../../../../assets/images/wallpaper.jfif" />
                 </div>
             </div>
-            <pre>
-                <code class="language-css">{{cssString}}</code>
-            </pre>
+            <app-loading-wrapper [loading]="cssString === ''">
+                <pre>
+                    <code class="language-css">{{cssString}}</code>
+                </pre>
+            </app-loading-wrapper>
         </div>
     </div>
 </div>

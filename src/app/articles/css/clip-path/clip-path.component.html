@@ -26,13 +26,17 @@
                 </div>
             </div>
             <h4>css属性</h4>
-            <pre>
-                <code class="language-css">{{cssString}}</code>
-            </pre>
+            <app-loading-wrapper [loading]="cssString === ''">
+                <pre>
+                    <code class="language-css">{{cssString}}</code>
+                </pre>
+            </app-loading-wrapper>
             <h4>svg滤镜</h4>
-            <pre>
-                <code class="language-xml">{{svgMaskString}}</code>
-            </pre>
+            <app-loading-wrapper [loading]="svgMaskString === ''">
+                <pre>
+                    <code class="language-xml">{{svgMaskString}}</code>
+                </pre>
+            </app-loading-wrapper>
             <h4>较为复杂的实例</h4>
             <div class="paper-example">
                 <div class="paper" (mouseenter)="pos = 40" (mouseleave)="pos = 0">

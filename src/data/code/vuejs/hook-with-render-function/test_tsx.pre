@@ -1,0 +1,34 @@
+// 数据提交更新
+export default defineComponent({
+    setup() {
+        const inputValue = ref('222')
+        
+        const { showDialog, dialog: Outet } = useDialog(inputValue.value, value => {
+            inputValue.value = value;
+        })
+
+        return () => (
+            <div>
+                <div>input value: {inputValue.value}</div>
+                <button onClick={showDialog}>show dialog</button>
+                <Outet />
+            </div>
+        )
+    }
+})
+
+// 数据实时更新
+export const Reactiveble = defineComponent({
+    setup() {
+
+        const { latest, showDialog, dialog: Outet } = useDialog('222')
+
+        return () => (
+            <div>
+                <div>input value: {latest.value}</div>
+                <button onClick={showDialog}>show dialog</button>
+                <Outet />
+            </div>
+        )
+    }
+})

@@ -1,0 +1,43 @@
+import { ref } from 'vue'
+import { NModal } from 'naive-ui'
+
+function useDialog(initValue: string, onChange: (value: string) => void) {
+
+    const showModal = ref(false)
+
+    const latest = ref<string>(initValue)
+
+    const showDialog = () => {
+        showModal.value = true
+    }
+
+    const closeDialog = () => {
+        showModal.value = false;
+    }
+
+    const onSubmit = () => {
+        closeDialog();
+        onChange?.(latest.value)
+    }
+
+    const dialog = () => (
+        <NModal
+            title="test"
+            preset="dialog"
+            show={showModal.value}
+            onUpdateShow={ show => showModal.value = show}
+        >
+            <div>
+                <input v-model={latest.value} />
+                <button onClick={onSubmit}>submit</button>
+            </div>
+        </NModal>
+    )
+
+    return {
+        dialog,
+        showDialog,
+        closeDialog,
+        latest
+    }
+}

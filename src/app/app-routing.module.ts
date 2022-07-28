@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./articles/vuejs/vuejs-routing.module').then(m => m.VuejsRoutingModule),
   },
   {
+    path: 'react',
+    loadChildren: () => import('./articles/react/react-routing.module').then(m => m.ReactRoutingModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }

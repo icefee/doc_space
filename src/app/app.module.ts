@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChromeModule } from './articles/chrome/chrome.module';
 import { CssModule } from './articles/css/css.module';
 import { VuejsModule } from './articles/vuejs/vuejs.module';
+import { ReactModule } from './articles/react/react.module';
 
 import { RouterNavigateLastwordComponent } from './articles/vuejs/router-navigate-lastword/router-navigate-lastword.component';
 import { ApiInterceptorComponent } from './articles/vuejs/api-interceptor/api-interceptor.component';
@@ -21,6 +22,7 @@ import { MaterialModule } from './material/material.module';
 import { IconComponent } from './icon/icon.component';
 import { LoadingWrapperComponent } from './components/loading-wrapper/loading-wrapper.component';
 import { GetRequestListComponent } from './articles/chrome/get-request-list/get-request-list.component';
+import { SnackbarHookComponent } from './articles/react/snackbar-hook/snackbar-hook.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { GetRequestListComponent } from './articles/chrome/get-request-list/get-
     RouterNavigateLastwordComponent,
     HookWithRenderFunctionComponent,
     ApiInterceptorComponent,
+    SnackbarHookComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { GetRequestListComponent } from './articles/chrome/get-request-list/get-
     ChromeModule,
     CssModule,
     VuejsModule,
+    ReactModule,
     MaterialModule
   ],
   providers: [],

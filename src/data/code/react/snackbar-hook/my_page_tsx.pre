@@ -1,0 +1,49 @@
+import React from 'react';
+import { Alert } from '@mui/material';
+import { useSnackbar, SnackbarContext, type SnackbarContextProps } from 'util/useSnackbar';
+
+// 函数式组件调用
+function MyPage() {
+
+    const showSnackbar = useSnackbar();
+
+    const handleClick = () => {
+        showSnackbar({
+            message: '这是个测试的消息',
+            autoHideDuration: 3000
+        });
+    }
+
+    return (
+        <button onClick={handleClick}>show snackbar</button>
+    );
+}
+
+
+// 类组件调用
+class MyPage extends React.Component {
+
+    public context: React.ContextType<typeof SnackbarContext>;
+
+    static contextType: React.Context<SnackbarContextProps> = SnackbarContext
+
+    public handleClick() {
+        this.context.showSnackbar({
+            anchorOrigin: {
+                vertical: 'top',
+                horizontal: 'center'
+            },
+            children: (
+                <Alert severity="warning">这是一个Alert。</Alert>
+            ),
+            autoHideDuration: 10000
+        })
+    }
+
+    public render(): React.ReactNode {
+        return (
+            <button onClick={this.handleClick.bind(this)}>show snackbar</button>
+        )
+    }
+}
+

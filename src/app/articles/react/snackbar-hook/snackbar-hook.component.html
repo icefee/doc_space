@@ -1,0 +1,32 @@
+<div class="root">
+    <div class="container article">
+        <div class="header">
+            <h1>react @mui/material Snackbar组件封装自定义hook</h1>
+        </div>
+        <div class="info pub">
+            <p>发布于: 2022/07/28 10:13</p>
+        </div>
+        <div class="content">
+            <p>@mui/material作为react生态最流行的UI组件库, 提供了丰富的组件和强大的组件定制能力。在实际使用中, 对一些组件做一定的封装, 能够减少很多样板代码。</p>
+            <p>Snackbar作为Material UI中全局消息通知的组件, 并没有提供命令式的api(这很不react)。开发中我们可以将Snackbar封装成自定义hook, 来实现命令式调用。</p>
+            <h3 class="m-0">snackbar.ts</h3>
+            <app-loading-wrapper [loading]="snackbar_ts === ''">
+                <pre>
+                    <code class="language-typescript">{{snackbar_ts}}</code>
+                </pre>
+            </app-loading-wrapper>
+            <h3 class="m-0">app.tsx</h3>
+            <app-loading-wrapper [loading]="app_tsx === ''">
+                <pre>
+                    <code class="language-typescript">{{app_tsx}}</code>
+                </pre>
+            </app-loading-wrapper>
+            <h3 class="m-0">MyPage.tsx</h3>
+            <app-loading-wrapper [loading]="my_page_tsx === ''">
+                <pre>
+                    <code class="language-typescript">{{my_page_tsx}}</code>
+                </pre>
+            </app-loading-wrapper>
+        </div>
+    </div>
+</div>

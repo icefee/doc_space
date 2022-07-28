@@ -1,0 +1,10 @@
+import { SnackbarProvider } from 'hooks/snackbar'
+import MyPage from 'views/MyPage'
+
+export default function App() {
+    return (
+        <SnackbarProvider>
+            <MyPage />
+        </SnackbarProvider>
+    )
+}

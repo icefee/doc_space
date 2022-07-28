@@ -3,7 +3,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 50px;
+}
+
+.loading-wrapper.loading {
+    background-color: #eee;
+    border-radius: 5px;
 }
 
 .loading-content {

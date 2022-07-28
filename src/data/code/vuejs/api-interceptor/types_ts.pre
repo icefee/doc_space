@@ -7,5 +7,7 @@ type HttpIns = {
 
 type Interceptor = {
     request?: ((arg: RequestInit) => RequestInit) | null;
-    response?: (function<T = any>(arg: ApiResult<T>): Promise<ApiResult<T>>) | null // (<T = any>(arg: ApiResult<T>) => Promise<ApiResult<T>>) | null;
+    response?: (function<T = any>(
+        arg: ApiResult<T>
+    ): Promise<ApiResult<T>>) | null // (<T = any>(arg: ApiResult<T>) => Promise<ApiResult<T>>) | null;
 }

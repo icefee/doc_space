@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class LoadingWrapperComponent implements OnInit {
   
   @Input() loading!: boolean;
+  @Input() placeholderHeight = 50;
 
   constructor() { }
 

@@ -23,6 +23,7 @@ import { IconComponent } from './icon/icon.component';
 import { LoadingWrapperComponent } from './components/loading-wrapper/loading-wrapper.component';
 import { GetRequestListComponent } from './articles/chrome/get-request-list/get-request-list.component';
 import { SnackbarHookComponent } from './articles/react/snackbar-hook/snackbar-hook.component';
+import { EmbedWrapperComponent } from './components/embed-wrapper/embed-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { SnackbarHookComponent } from './articles/react/snackbar-hook/snackbar-h
     HookWithRenderFunctionComponent,
     ApiInterceptorComponent,
     SnackbarHookComponent,
+    EmbedWrapperComponent,
   ],
   imports: [
     BrowserModule,

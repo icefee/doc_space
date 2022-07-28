@@ -1,5 +1,5 @@
-<div class="loading-wrapper">
-    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div class="loading-wrapper" [class.loading]="loading" [style]="{ minHeight: placeholderHeight + 'px' }">
+    <mat-progress-bar [style.width.px]="300" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
     <div class="loading-content" [style.display]="loading ? 'none' : 'block'">
         <ng-content></ng-content>
     </div>

@@ -41,7 +41,7 @@
                 <h3 class="m-0">在线演示</h3>
                 <a [href]="online_demo" target="_blank">[新窗口]</a>
             </div>
-            <iframe width="100%" height="600" frameborder="0" [src]="online_demo | safeUrl"></iframe>
+            <app-embed-wrapper [src]="online_demo"></app-embed-wrapper>
         </div>
     </div>
 </div>

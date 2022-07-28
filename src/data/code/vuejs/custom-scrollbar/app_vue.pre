@@ -1,0 +1,17 @@
+<template>
+  <div id="app">
+    <scroll-bar :style="{ height: '200px' }">
+      <p v-for="p in 20">段落{{ p }}</p>
+    </scroll-bar>
+  </div>
+</template>
+
+<script>
+import ScrollBar from './components/scroll-bar.vue';
+export default {
+  name: 'App',
+  components: {
+    ScrollBar,
+  },
+};
+</script>

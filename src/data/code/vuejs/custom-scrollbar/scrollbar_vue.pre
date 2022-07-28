@@ -1,0 +1,105 @@
+<template>
+  <div class="scroll-container" ref="container" @wheel="handleWheel">
+    <div
+      class="scroll-wrap"
+      ref="content"
+      :style="{ transform: 'translateY(' + scrollTop + 'px)' }"
+    >
+      <slot />
+    </div>
+    <div
+      class="scroller"
+      @mousedown="mousedown"
+      :style="scrollerStyle"
+      v-if="scrollerShow"
+    ></div>
+  </div>
+</template>
+
+<style scoped>
+.scroll-container {
+  position: relative;
+  overflow: hidden;
+}
+.scroller {
+  position: absolute;
+  width: 8px;
+  top: 0;
+  right: 5px;
+  border-radius: 5px;
+  background-color: #444;
+  user-select: none;
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {
+      scrollerShow: false,
+      scrollerHeight: 0,
+      scrollTop: 0,
+      dragging: false,
+      originOffset: 0,
+    };
+  },
+  mounted() {
+    this.scrollerShow = this.contentHeight > this.containerHeight;
+    this.scrollerHeight =
+      (this.containerHeight * 100) / this.contentHeight + '%';
+    document.addEventListener('mouseup', this.mouseup);
+    document.addEventListener('mousemove', this.mousemove);
+  },
+  beforeDestroy() {
+    document.removeEventListener('mouseup', this.mouseup);
+    document.removeEventListener('mousemove', this.mousemove);
+  },
+  methods: {
+    handleWheel(ev) {
+      const scrollTop = this.scrollTop - ev.deltaY * 0.5;
+      this.scrollTop = Math.min(
+        0,
+        Math.max(scrollTop, this.containerHeight - this.contentHeight)
+      );
+    },
+    mousedown(ev) {
+      this.dragging = true;
+      this.originOffset = ev.clientY;
+    },
+    mouseup(ev) {
+      this.dragging = false;
+    },
+    mousemove(ev) {
+      if (this.dragging) {
+        const scrollTop =
+          this.scrollTop -
+          ((ev.clientY - this.originOffset) * this.contentHeight) /
+            this.containerHeight;
+        this.scrollTop = Math.min(
+          0,
+          Math.max(scrollTop, this.containerHeight - this.contentHeight)
+        );
+        this.originOffset = ev.clientY;
+      }
+    },
+  },
+  computed: {
+    contentHeight() {
+      return [...this.$refs.content.children].reduce((pre, cur) => {
+        const [margin] = getComputedStyle(cur).marginBlock.split('px');
+        return pre + cur.clientHeight + Number(margin);
+      }, 0);
+    },
+    containerHeight() {
+      return this.$refs.container.clientHeight;
+    },
+    scrollerStyle() {
+      return {
+        height: this.scrollerHeight,
+        top:
+          (-this.scrollTop * this.containerHeight) / this.contentHeight + 'px',
+      };
+    },
+  },
+};
+</script>

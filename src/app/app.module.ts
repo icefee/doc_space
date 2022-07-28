@@ -12,6 +12,7 @@ import { ReactModule } from './articles/react/react.module';
 import { RouterNavigateLastwordComponent } from './articles/vuejs/router-navigate-lastword/router-navigate-lastword.component';
 import { ApiInterceptorComponent } from './articles/vuejs/api-interceptor/api-interceptor.component';
 import { HookWithRenderFunctionComponent } from './articles/vuejs/hook-with-render-function/hook-with-render-function.component';
+import { CustomScrollbarComponent } from './articles/vuejs/custom-scrollbar/custom-scrollbar.component';
 
 import { ClipPathComponent } from './articles/css/clip-path/clip-path.component';
 import { BackdropFilterComponent } from './articles/css/backdrop-filter/backdrop-filter.component';
@@ -42,6 +43,7 @@ import { EmbedWrapperComponent } from './components/embed-wrapper/embed-wrapper.
     RouterNavigateLastwordComponent,
     HookWithRenderFunctionComponent,
     ApiInterceptorComponent,
+    CustomScrollbarComponent,
     SnackbarHookComponent,
     EmbedWrapperComponent,
   ],

@@ -1,0 +1,31 @@
+<div class="root">
+    <div class="container article">
+        <div class="header">
+            <h1>vuejs自定义(模态)滚动条组件</h1>
+        </div>
+        <div class="info pub">
+            <p>发布于: 2022/07/28 10:13</p>
+        </div>
+        <div class="content">
+            <p>新的css标准里提供了对原生滚动条的样式自定义, 但并不是所有的浏览器都支持良好。这时候就需要一个自定义的模态滚动条组件来解决不同浏览器终端样式不统一的问题。</p>
+            <p>不少UI组件库提供了类似的组件, 其实自己封装一个并不复杂。</p>
+            <h3 class="m-0">scroll-bar.vue</h3>
+            <app-loading-wrapper [loading]="scrollbar_vue === ''">
+                <pre>
+                    <code class="language-typescript">{{scrollbar_vue}}</code>
+                </pre>
+            </app-loading-wrapper>
+            <h3 class="m-0">组件内调用 - App.vue</h3>
+            <app-loading-wrapper [loading]="app_vue === ''">
+                <pre>
+                    <code class="language-handlebars">{{app_vue}}</code>
+                </pre>
+            </app-loading-wrapper>
+            <div class="demo-title">
+                <h3 class="m-0">在线演示</h3>
+                <a [href]="online_demo" target="_blank">[新窗口]</a>
+            </div>
+            <app-embed-wrapper [src]="online_demo"></app-embed-wrapper>
+        </div>
+    </div>
+</div>

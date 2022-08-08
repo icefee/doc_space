@@ -1,0 +1,149 @@
+import React, { useState, useContext } from 'react'
+import { generateContext } from '../context/context'
+
+type FocusKeyStore = {
+    [key: string]: number;
+}
+
+type FocusKeyStoreContextProps = {
+    focusStoreKeys: FocusKeyStore,
+    setFocusStoreKey(key: string, value: number): void;
+}
+
+const FocusKeyStoreContext = generateContext<FocusKeyStoreContextProps | null>(null)
+
+export function FocusKeyStoreProvider({ children }: { children: React.ReactChild }) {
+    const [focusStoreKeys, setFocusStoreKeys] = useState<FocusKeyStore>({})
+    return (
+        <FocusKeyStoreContext.Provider value={{
+            focusStoreKeys,
+            setFocusStoreKey(key: string, value: number) {
+                setFocusStoreKeys(
+                    keys => ({
+                        ...keys,
+                        [key]: value
+                    })
+                )
+            }
+        }}>{children}</FocusKeyStoreContext.Provider>
+    )
+}
+
+export function useFocusStoreKey(key: string): [number, (value: number) => void] {
+    const context = useContext<FocusKeyStoreContextProps | null>(FocusKeyStoreContext)
+    let focusKey = 0;
+    if (context && context.focusStoreKeys[key] !== undefined) {
+        focusKey = context.focusStoreKeys[key]
+    }
+    return [
+        focusKey,
+        (value: number) => context?.setFocusStoreKey(key, value)
+    ]
+}
+
+
+
+/**
+
+../context/context
+
+**/
+
+import { createContext, Context } from 'react';
+
+export function generateContext<T = any>(initValue: T): Context<T> {
+    return createContext<T>(initValue);
+}
+
+/**
+
+end
+
+**/
+
+
+
+/**
+
+App.tsx  根组件引入
+
+**/
+
+import { FocusKeyStoreProvider } from './hook/store'
+
+const App = () => {
+    return (
+        <SafeAreaView>
+            <StatusBar />
+            <View style={{ height: '100%' }}>
+                <FocusKeyStoreProvider>{/* 确保放在所有页面的外层 */}
+                    <NavigationContainer>
+                        <Stack.Navigator initialRouteName="home">
+                            {...}
+                        </Stack.Navigator>
+                    </NavigationContainer>
+                </FocusKeyStoreProvider>
+            </View>
+        </SafeAreaView>
+    )
+}
+
+export default App;
+
+/**
+
+end
+
+**/
+
+
+
+/**
+
+Home.tsx  页面使用
+
+**/
+
+import { useEffect, useMemo } from 'react';
+import { View, Text, TouchableHighlight } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
+import { useFocusStoreKey } from '../hook/store';
+
+function Home() {
+    const [storeFocus, setStoreFocus] = useFocusStoreKey('home') // 传页面的唯一标识
+    const isFocused = useIsFocused();
+
+    const testButtons = useMemo(() => {
+        return Array.from(
+            { length: 5 },
+            (_, index) => ({ key: index })
+        )
+    }, [])
+
+    useEffect(() => {
+        if (isFocused) {
+            setFocused(storeFocus) // 回到当前页面恢复缓存的焦点
+        }
+        else {
+            setFocused(-1) // 页面离点置空焦点
+        }
+    }, [isFocused])
+
+    return (
+        <View>
+            {
+                testButtons.map(
+                    (_, { key }) => (
+                        <TouchableHighlight style={{
+                            margin: 4,
+                        }} underlayColor="cyan" hasTVPreferredFocus={0 === key /* 默认焦点 */} onFocus={
+                            () => setStoreFocus(key) // 获得焦点的时候缓存该焦点
+                        }>
+                            <Text>Button-{key}</Text>
+                        </TouchableHighlight>
+                    )
+                )
+            }
+        </View>
+    )
+}

@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./articles/react/react-routing.module').then(m => m.ReactRoutingModule),
   },
   {
+    path: 'flutter',
+    loadChildren: () => import('./articles/flutter/flutter-routing.module').then(m => m.ReactRoutingModule),
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }

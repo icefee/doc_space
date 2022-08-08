@@ -1,0 +1,34 @@
+<div class="root">
+    <div class="container article">
+        <div class="header">
+            <h1>react-native-tvos 按键事件监听</h1>
+        </div>
+        <div class="info pub">
+            <p>发布于: 2022/08/08 15:57</p>
+        </div>
+        <div class="content">
+            <p>react-native作为React生态流行的跨平台解决方案, 可以同时编译为Android、IOS、Windows等多个平台的原生应用。</p>
+            <p>react-native-tvos作为电视操作系统的解决方案, 之前一直随react-native一同更新, 后来慢慢独立成为了单独的仓库来维护。</p>
+            <p>前一段时间开发了一款运行在电视端的简单视频App, 遇到一些问题, 有些细节的地方, 官网也没有特意说明, 不注意的话很容易出错。</p>
+            <h3 class="m-0">1.只有当页面上存在可以获得焦点的元素, 按键事件才会触发。</h3>
+            <app-loading-wrapper [loading]="event_handler_tsx === ''">
+                <pre>
+                    <code class="language-typescript">{{event_handler_tsx}}</code>
+                </pre>
+            </app-loading-wrapper>
+            <h3 class="m-0">2.焦点控制最好通过非受控的方式去做, 否则很容易出现性能问题。</h3>
+            <app-loading-wrapper [loading]="focus_state_tsx === ''">
+                <pre>
+                    <code class="language-typescript">{{focus_state_tsx}}</code>
+                </pre>
+            </app-loading-wrapper>
+            <h3 class="m-0">3.在使用官方推荐的路由库react-navigation切换页面会导致焦点丢失。</h3>
+            <p>社区比较普遍的做法是通过一个context来缓存焦点, 在回到页面的时候恢复缓存的焦点, 可以封装成自定义hook方便调用。</p>
+            <app-loading-wrapper [loading]="focus_store_tsx === ''">
+                <pre>
+                    <code class="language-typescript">{{focus_store_tsx}}</code>
+                </pre>
+            </app-loading-wrapper>
+        </div>
+    </div>
+</div>

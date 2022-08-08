@@ -1,0 +1,21 @@
+import React from 'react';
+import { View, Text, TouchableWithoutFeedback, useTVEventHandler, type HWEvent } from 'react-native';
+
+function EventHandler() {
+
+    const tvEventHandler = (event: HWEvent) => {
+        console.log(event.eventType) // 'left' | 'up' | 'right' | 'down' | 'select'
+    };
+
+    useTVEventHandler(tvEventHandler);
+
+    return (
+        <View>
+            <TouchableWithoutFeedback hasTVPreferredFocus>
+                <Text>focus</Text>
+            </TouchableWithoutFeedback>
+        </View>
+    ) // TouchableWithoutFeedback 作为可以获得焦点的元素, 当前页面至少要有一个
+}
+
+export default EventHandler;

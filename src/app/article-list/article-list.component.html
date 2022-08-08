@@ -3,45 +3,31 @@
         <div class="header">
             <h1>所有文章</h1>
         </div>
-        <div class="list">
+        <div class="search">
+            <mat-form-field appearance="outline" [style.width.px]="250">
+                <mat-label>搜索</mat-label>
+                <input [(ngModel)]="keyword" matInput>
+                <app-icon type="search" name="search-regular" matSuffix></app-icon>
+            </mat-form-field>
+        </div>
+        <div class="filter">
+            <mat-chip-list multiple>
+                <mat-chip *ngFor="let chip of chips"
+                chipListSelectable [selected]="selectedTags.includes(chip)" (click)="setSelectedTags($event, chip)">{{ chip }}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="list" *ngIf="filterArticles.length > 0">
             <ul>
-                <li>
-                    <a routerLink="/vuejs/custom_scrollbar">vuejs自定义(模态)滚动条组件🚀</a>
-                    <em>2022/07/28 13:36</em>
-                </li>
-                <li>
-                    <a routerLink="/react/snackbar_hook">react @mui/material Snackbar组件封装自定义hook🚀</a>
-                    <em>2022/07/28 10:13</em>
-                </li>
-                <li>
-                    <a routerLink="/vuejs/hook_with_render_function">vuejs(3.x)自定义hook返回渲染函数🚀</a>
-                    <em>2022/07/26 14:50</em>
-                </li>
-                <li>
-                    <a routerLink="/vuejs/router_navigate_lastword">vuejs(3.x)路由(vue-router)导航遗言参数🚀</a>
-                    <em>2022/06/04 09:40</em>
-                </li>
-                <li>
-                    <a routerLink="/vuejs/api_interceptor">vuejs(3.x)中请求/响应拦截的实现🚀</a>
-                    <em>2022/05/30 17:15</em>
-                </li>
-                <li>
-                    <a routerLink="/css/clip_path">css蒙板剪裁自定义形状属性clip-path🍃</a>
-                    <em>2022/05/25 15:58</em>
-                </li>
-                <li>
-                    <a routerLink="/css/backdrop_filter">css背景滤镜backdrop-filter🍃</a>
-                    <em>2022/05/25 11:35</em>
-                </li>
-                <li>
-                    <a routerLink="/chrome/get_request_list">获取Chrome调试面板中筛选的请求列表🚀</a>
-                    <em>2022/05/25 10:02</em>
-                </li>
-                <li>
-                    <a routerLink="/css/background_clip">css背景剪裁background-clip实现文字颜色特效🍃</a>
-                    <em>2022/05/25 9:20</em>
+                <li *ngFor="let article of filterArticles">
+                    <a [routerLink]="article.link">{{ article.title }}</a>
+                    <em>{{ article.publishDate }}</em>
                 </li>
             </ul>
+        </div>
+        <div class="empty-list" *ngIf="filterArticles.length === 0">
+            <app-icon type="#999" name="sad-regular"></app-icon>
+            <span>暂无符合条件的内容</span>
         </div>
     </div>
 </div>

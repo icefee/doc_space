@@ -1,3 +1,26 @@
+.search {
+    display: flex;
+    padding-left: 30px;
+}
+
+.filter {
+    padding-left: 30px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.filter * {
+    user-select: none;
+}
+
+.empty-list {
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .list {
     padding-left: 20px;
 }

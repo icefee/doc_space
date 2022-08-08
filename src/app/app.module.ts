@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +10,7 @@ import { ChromeModule } from './articles/chrome/chrome.module';
 import { CssModule } from './articles/css/css.module';
 import { VuejsModule } from './articles/vuejs/vuejs.module';
 import { ReactModule } from './articles/react/react.module';
+import { FlutterModule } from './articles/flutter/flutter.module';
 
 import { RouterNavigateLastwordComponent } from './articles/vuejs/router-navigate-lastword/router-navigate-lastword.component';
 import { ApiInterceptorComponent } from './articles/vuejs/api-interceptor/api-interceptor.component';
@@ -25,6 +28,8 @@ import { LoadingWrapperComponent } from './components/loading-wrapper/loading-wr
 import { GetRequestListComponent } from './articles/chrome/get-request-list/get-request-list.component';
 import { SnackbarHookComponent } from './articles/react/snackbar-hook/snackbar-hook.component';
 import { EmbedWrapperComponent } from './components/embed-wrapper/embed-wrapper.component';
+import { ReactNativeTvosEventHandlerComponent } from './articles/react/react-native-tvos-event-handler/react-native-tvos-event-handler.component';
+import { ScaffoldMessageMaterialBannerComponent } from './articles/flutter/scaffold-message-material-banner/scaffold-message-material-banner.component';
 
 @NgModule({
   declarations: [
@@ -46,15 +51,20 @@ import { EmbedWrapperComponent } from './components/embed-wrapper/embed-wrapper.
     CustomScrollbarComponent,
     SnackbarHookComponent,
     EmbedWrapperComponent,
+    ReactNativeTvosEventHandlerComponent,
+    ScaffoldMessageMaterialBannerComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+
     AppRoutingModule,
     ChromeModule,
     CssModule,
     VuejsModule,
     ReactModule,
+    FlutterModule,
     MaterialModule
   ],
   providers: [],

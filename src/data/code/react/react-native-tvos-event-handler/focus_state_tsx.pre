@@ -1,0 +1,30 @@
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+
+function FocusState() {
+
+    const [touchableButtons] = useState(
+        Array.from(
+            { length: 10 },
+            (_, index) => ({ key: index })
+        )
+    )
+
+    return (
+        <View style={{ flexDirection: 'row' }}>
+            {
+                touchableButtons.map(
+                    ({ key }) => (
+                        <TouchableHighlight style={{
+                            padding: 4,
+                        }} underlayColor="cyan" hasTVPreferredFocus={0 === key}>
+                            <Text>Button-{key}</Text>
+                        </TouchableHighlight>
+                    )
+                )
+            }
+        </View>
+    )
+}
+
+export default FocusState;

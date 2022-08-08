@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+
+class Page extends StatefulWidget {
+    @override
+    State<Page> createState() => _Page();
+}
+
+class _Page extends State<Page> {
+    
+    ScaffoldFeatureController? messageBanner;
+
+    void showMaterialBanner() {
+        messageBanner = ScaffoldMessenger.of(context).showMaterialBanner(
+        MaterialBanner(
+            content: const Text('发生错误.'),
+            contentTextStyle: const TextStyle(color: Colors.white),
+            backgroundColor: Colors.red,
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    _disposeErrorMsg();
+                  },
+                  child: const Text('确定', style: TextStyle(color: Colors.white)))
+            ]),
+        );
+    }
+
+    Future<void> _disposeErrorMsg() async {
+        messageBanner?.close();
+        await messageBanner?.closed;
+    }
+
+    @override
+    Widget build(BuildContext context) {
+        return WillPopScope(
+            onWillPop: () async {
+                if (failed) {
+                    await _disposeErrorMsg(); // 退出之前销毁消息通知
+                }
+                return true;
+            },
+            child: Text('page')
+        );
+    }
+}

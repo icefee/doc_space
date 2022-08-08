@@ -8,6 +8,12 @@
         </div>
         <div class="content">
             <p>在使用flutter开发应用的时候, 有时候需要显示一条错误提示, 相比于需要引入第三方插件才能用的Toast, 使用Scaffold自带的SnackBar跟MaterialBanner显然要方便很多, 但是也有一些需要注意的地方。</p>
+            <h3 class="m-0">page.dart</h3>
+            <app-loading-wrapper [loading]="page_dart === ''">
+                <pre>
+                    <code class="language-typescript">{{page_dart}}</code>
+                </pre>
+            </app-loading-wrapper>
         </div>
     </div>
 </div>

@@ -7,6 +7,12 @@ export type Article = {
 
 const articles: Article[] = [
     {
+        title: '[css]steps步调动画实现yarn安装依赖控制台loading动画🍃',
+        link: '/css/steps_animation_timing_function',
+        publishDate: '2022/08/09 14:37',
+        tags: ['css']
+    },
+    {
         title: '[flutter]使用MaterialBanner显示置顶的提醒',
         link: '/flutter/scaffold_message_material_banner',
         publishDate: '2022/08/08 17:24',

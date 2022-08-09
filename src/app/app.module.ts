@@ -30,6 +30,7 @@ import { SnackbarHookComponent } from './articles/react/snackbar-hook/snackbar-h
 import { EmbedWrapperComponent } from './components/embed-wrapper/embed-wrapper.component';
 import { ReactNativeTvosEventHandlerComponent } from './articles/react/react-native-tvos-event-handler/react-native-tvos-event-handler.component';
 import { ScaffoldMessageMaterialBannerComponent } from './articles/flutter/scaffold-message-material-banner/scaffold-message-material-banner.component';
+import { StepsAnimationTimingFunctionComponent } from './articles/css/steps-animation-timing-function/steps-animation-timing-function.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ScaffoldMessageMaterialBannerComponent } from './articles/flutter/scaff
     EmbedWrapperComponent,
     ReactNativeTvosEventHandlerComponent,
     ScaffoldMessageMaterialBannerComponent,
+    StepsAnimationTimingFunctionComponent
   ],
   imports: [
     BrowserModule,

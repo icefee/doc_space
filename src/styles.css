@@ -75,12 +75,13 @@ img {
 }
 
 .article .header {
+    display: flex;
+    justify-content: center;
     padding: 40px 20px 25px;
 }
 
 .article .header h1 {
     font-size: 25px;
-    text-align: center;
 }
 
 .article.collapsed .header {

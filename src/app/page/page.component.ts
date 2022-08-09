@@ -19,6 +19,9 @@ hljs.registerLanguage('css', css)
 })
 export class PageComponent {
 
+  protected lastScrollTop = 0;
+  public isToTop = false;
+
   protected initHljs(): void {
     hljs.highlightAll()
   }
@@ -31,6 +34,12 @@ export class PageComponent {
     return Promise.all(
       paths.map(loadCode)
     )
+  }
+
+  public handleListScroll(event: Event): void {
+    const scrollTop = (event.target as HTMLDivElement).scrollTop;
+    this.isToTop = scrollTop - this.lastScrollTop > 0;
+    this.lastScrollTop = scrollTop;
   }
 
 }

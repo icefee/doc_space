@@ -11,6 +11,10 @@ export class StepsAnimationTimingFunctionComponent extends PageComponent impleme
   html = '';
   css = '';
 
+  constructor() {
+    super();
+  }
+
   async ngOnInit(): Promise<void> {
     const [html, css] = await this.loadCodes([
       'css/steps-animation-timing-function/html.pre',

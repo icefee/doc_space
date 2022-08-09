@@ -1,12 +1,12 @@
 <div class="root">
-    <div class="container article">
+    <div class="container article" [class.collapsed]="isToTop">
         <div class="header">
             <h1>[css]steps步调动画实现yarn安装依赖控制台loading动画</h1>
         </div>
         <div class="info pub">
             <p>发布于: 2022/08/09 14:37</p>
         </div>
-        <div class="content">
+        <div class="content" (scroll)="handleListScroll($event)">
             <p>最近将包管理工具yarn从1.x升级到了3.x, 虽然老项目的有些兼容问题, 但也带来了速度上的提升。新版的yarn在安装依赖的时候有个有趣的loading动画, 可以很方便的用css步调动画实现。</p>
             <h3>效果如下:</h3>
             <div class="example">

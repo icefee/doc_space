@@ -74,17 +74,42 @@ img {
     margin: 0;
 }
 
-.article .header {
+.article {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.article .header {
+    position: relative;
+    padding: 0;
+    height: 100px;
+    flex-shrink: 0;
 }
 
 .article .header h1 {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all .4s;
     font-size: 25px;
 }
 
+.article.collapsed .header {
+    height: 40px;
+}
+
+.article.collapsed .header h1 {
+    top: 15px;
+    left: 20px;
+    transform: none;
+}
+
 .article .content {
+    flex-grow: 1;
     padding: 25px;
+    overflow-y: auto;
 }
 
 .article .content p {
@@ -111,6 +136,16 @@ img {
     padding: 20px;
     text-align: center;
     color: #666;
+    transition: .4s;
+}
+
+.article .pub p {
+    margin-bottom: 0;
+}
+
+.article.collapsed .pub {
+    padding: 8px;
+    text-align: right;
 }
 
 .article .demo-title {

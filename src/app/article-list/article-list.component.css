@@ -1,12 +1,37 @@
+:host .container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+:host .container .list {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+:host .container .header {
+    transition: padding .3s;
+}
+
+:host .container.collapsed .header {
+    padding: 10px;
+}
+
 .search {
     display: flex;
     padding-left: 30px;
 }
 
+:host .container.collapsed .search {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
 .filter {
     padding-left: 30px;
     margin-bottom: 25px;
-    overflow: hidden;
 }
 
 .filter * {

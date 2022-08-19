@@ -2,6 +2,7 @@
 
 :root {
     --linear-gradient: #ff006e, #8338ec, #3a86ff;
+    --box-shadow: rgb(0 0 0 / 50%) 3px 3px 15px;
 }
 
 html,
@@ -58,6 +59,7 @@ img {
     overflow-y: auto;
     background-color: #fff;
     margin: 0 auto;
+    box-shadow: var(--box-shadow);
 }
 
 .header {

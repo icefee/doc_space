@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
+type IconMap = 'search-regular' | 'sad-regular' | 'react-logo' | 'vuejs-logo' | 'angular-logo'
+
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
@@ -9,7 +11,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class IconComponent implements OnInit {
   @Input()
-  name!: string;
+  name!: IconMap;
   @Input()
   color: string = '#000'
 

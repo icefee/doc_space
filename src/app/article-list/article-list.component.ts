@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import articles from './articles';
 import articleData, { type Article } from './articles';
 
 @Component({
@@ -11,8 +10,6 @@ export class ArticleListComponent implements OnInit {
 
   public keyword = '';
   public selectedTags: string[] = [];
-  public lastScrollTop = 0;
-  public isToTop = false;
 
   ngOnInit(): void {
     this.selectedTags = this.generateTags(articleData);
@@ -61,12 +58,6 @@ export class ArticleListComponent implements OnInit {
     else {
       this.selectedTags.push(tag)
     }
-  }
-
-  public handleListScroll(event: Event): void {
-    const scrollTop = (event.target as HTMLDivElement).scrollTop;
-    this.isToTop = scrollTop - this.lastScrollTop > 0;
-    this.lastScrollTop = scrollTop;
   }
 
 }

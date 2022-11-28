@@ -1,16 +1,16 @@
-<div class="root">
-    <div class="container" [class.collapsed]="isToTop">
-        <div class="fixed-header" [class.has-shadow]="lastScrollTop > 0">
+<div class="articles root">
+    <div class="container">
+        <div class="fixed-header">
             <div class="header-layout">
                 <div class="header">
                     <h1>所有文章</h1>
-                </div>
-                <div class="search">
-                    <mat-form-field appearance="outline" class="search-field">
-                        <mat-label>搜索</mat-label>
-                        <input [(ngModel)]="keyword" matInput>
-                        <app-icon type="search" name="search-regular" matSuffix></app-icon>
-                    </mat-form-field>
+                    <div class="search">
+                        <mat-form-field appearance="outline" class="search-field">
+                            <mat-label>搜索</mat-label>
+                            <input [(ngModel)]="keyword" matInput>
+                            <app-icon type="search" name="search-regular" matSuffix></app-icon>
+                        </mat-form-field>
+                    </div>
                 </div>
                 <div class="filter">
                     <mat-chip-list multiple>
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="list" *ngIf="filterArticles.length > 0" (scroll)="handleListScroll($event)">
+        <div class="list" *ngIf="filterArticles.length > 0">
             <ul>
                 <li *ngFor="let article of filterArticles">
                     <a [routerLink]="article.link">{{ article.title }}</a>

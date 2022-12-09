@@ -34,7 +34,7 @@
 
 .empty-list {
     width: 100%;
-    min-height: 400px;
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;

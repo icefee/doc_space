@@ -20,18 +20,8 @@ code {
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 12px;
-}
-
-::-webkit-scrollbar-corner,
-::-webkit-scrollbar-track {
-    background-color: #ddd;
-}
-
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-thumb {
-    border-radius: 8px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -48,7 +38,7 @@ img {
 }
 
 .root {
-    background-image: linear-gradient(0, #8338ec, #3a86ff);
+    background-image: linear-gradient(45deg, #00bcd4, #ff5722);
     height: 100vh;
     overflow: hidden;
 }
@@ -57,7 +47,7 @@ img {
     width: 1000px;
     height: 100%;
     overflow-y: auto;
-    background-color: #fff;
+    background-color: hsla(0, 50%, 100%, .5);
     margin: 0 auto;
     box-shadow: var(--box-shadow);
 }
@@ -161,6 +151,11 @@ img {
 }
 
 @media screen and (max-width: 640px) {
+    ::-webkit-scrollbar {
+        width: 2px;
+        height: 2px;
+    }
+
     .article .content p {
         font-size: 1em;
     }
